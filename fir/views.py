@@ -5,6 +5,8 @@ import json
 from .forms import PostForm
 from django.utils import timezone
 from .models import Post
+from .models import People
+
 # Create your views here.
 def home(request):
 	return render(request, 'sec/home.html')
@@ -80,3 +82,7 @@ def fir_detail_api(request):
 			"message": "Incorrect details!"
 		}
 		return JsonResponse(data, safe=False)
+
+
+def fir_enter(request):
+	return render(request, 'sec/enter.html')

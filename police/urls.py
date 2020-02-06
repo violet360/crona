@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from fir import views as fir_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,9 @@ urlpatterns = [
     path('fir/new/api/', fir_view.fir_new_api, name='fir_new_api'),
     path('fir/<int:pk>', fir_view.fir_detail, name = 'fir_detail'),
    	path('fir/list', fir_view.fir_list, name = 'fir_list'),
+   	path('fir/enter', fir_view.fir_enter, name = 'fir_enter'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
